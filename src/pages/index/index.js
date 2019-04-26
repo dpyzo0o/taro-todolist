@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
+import { AtButton } from 'taro-ui'
 
 import { add, minus, asyncAdd } from '../../actions/counter'
 
@@ -23,21 +24,24 @@ class Index extends Component {
 
   render() {
     return (
-      <View className='index'>
-        <Button className='add_btn' onClick={this.props.add}>
-          +
-        </Button>
-        <Button className='dec_btn' onClick={this.props.dec}>
-          -
-        </Button>
-        <Button className='dec_btn' onClick={this.props.asyncAdd}>
-          async
-        </Button>
-        <View>
-          <Text>{this.props.counter.num}</Text>
+      <View className="index">
+        <View className="index-item">
+          <AtButton type="primary" size="small" circle onClick={this.props.add}>
+            +
+          </AtButton>
+        </View>
+        <View className="index-item">
+          <AtButton type="primary" size="small" circle onClick={this.props.dec}>
+            -
+          </AtButton>
+        </View>
+        <View className="index-item">
+          <AtButton type="primary" size="small" onClick={this.props.asyncAdd}>
+            async
+          </AtButton>
         </View>
         <View>
-          <Text>Hello, World</Text>
+          <Text>{this.props.counter.num}</Text>
         </View>
       </View>
     )
