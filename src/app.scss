@@ -1,1 +1,7 @@
 @import '~taro-ui/dist/style/index.scss';
+
+.custom-button {
+  .at-button {
+    width: 250px;
+  }
+}

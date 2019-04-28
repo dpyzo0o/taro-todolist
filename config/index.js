@@ -90,7 +90,8 @@ const config = {
           }
         }
       }
-    }
+    },
+    esnextModules: ['taro-ui']
   }
 }
 

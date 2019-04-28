@@ -1,0 +1,17 @@
+.new-todo {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+
+  &-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-main {
+    flex: 1;
+  }
+}
