@@ -4,7 +4,7 @@ import { AtInput, AtIcon } from 'taro-ui'
 
 import './index.scss'
 
-class NewTodo extends Component {
+export default class NewTodo extends Component {
   state = {
     value: '',
   }
@@ -28,7 +28,7 @@ class NewTodo extends Component {
     return (
       <View className='new-todo'>
         <View class='new-todo-icon'>
-          <AtIcon value='add' size='20' />
+          <AtIcon value='add' size='20' color='#808284' />
         </View>
         <View className='new-todo-main'>
           <AtInput
@@ -42,5 +42,3 @@ class NewTodo extends Component {
     )
   }
 }
-
-export default NewTodo

@@ -1,42 +1,18 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { connect } from '@tarojs/redux'
 
-import {
-  addTodo as add_todo,
-  deleteTodo as delete_todo,
-  editTodo as edit_todo,
-  completeTodo as complete_todo,
-} from '../../actions'
 import TodoItem from '../TodoItem'
 import NewTodo from '../NewTodo'
 
-const mapStateToProps = state => ({
-  todos: state.todos,
-})
-
-const mapDispatchToProps = dispatch => ({
-  addTodo(text) {
-    dispatch(add_todo(text))
-  },
-  editTodo(id, text) {
-    dispatch(edit_todo(id, text))
-  },
-  deleteTodo(id) {
-    dispatch(delete_todo(id))
-  },
-  completeTodo(id) {
-    dispatch(complete_todo(id))
-  },
-})
-
-@connect(
-  mapStateToProps,
-  mapDispatchToProps
-)
-class TodoList extends Component {
+export default class TodoList extends Component {
   render() {
-    const { todos, addTodo, editTodo, deleteTodo, completeTodo } = this.props
+    const {
+      todos,
+      onAddTodo,
+      onEditTodo,
+      onDeleteTodo,
+      onCompleteTodo,
+    } = this.props
 
     return (
       <View className='todo-list'>
@@ -44,15 +20,13 @@ class TodoList extends Component {
           <TodoItem
             key={todo.id}
             todo={todo}
-            onEdit={editTodo}
-            onDelete={deleteTodo}
-            onComplete={completeTodo}
+            onEdit={onEditTodo}
+            onDelete={onDeleteTodo}
+            onComplete={onCompleteTodo}
           />
         ))}
-        <NewTodo onAdd={addTodo} />
+        <NewTodo onAdd={onAddTodo} />
       </View>
     )
   }
 }
-
-export default TodoList

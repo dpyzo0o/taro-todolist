@@ -25,7 +25,9 @@ class TodoItem extends Component {
   }
 
   handleBlur = (id, text) => {
-    this.props.onEdit(id, text)
+    if (text !== this.props.todo.text) {
+      this.props.onEdit(id, text)
+    }
   }
 
   handleDelete = id => {
