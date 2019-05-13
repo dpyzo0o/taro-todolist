@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 import { AtTabs, AtTabsPane } from 'taro-ui'
 import { connect } from '@tarojs/redux'
 
-import TodoList from '../../components/TodoList'
+import TodoList from './TodoList'
 import {
   SHOW_ALL,
   SHOW_ACTIVE,
