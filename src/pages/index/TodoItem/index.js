@@ -51,10 +51,10 @@ class TodoItem extends Component {
         <View
           className={classNames({
             'todo-item-main': true,
-            'todo-item-done': todo.completed,
           })}
         >
           <AtInput
+            className={classNames({ 'todo-item-done': todo.completed })}
             value={this.state.value}
             onChange={this.handleChange}
             onBlur={this.handleBlur.bind(this, todo.id)}

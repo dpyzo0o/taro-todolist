@@ -17,6 +17,8 @@ import {
   completeTodo as complete_todo,
 } from '../../actions'
 
+import './index.scss'
+
 const tabList = [
   { title: 'All', filter: SHOW_ALL },
   { title: 'Active', filter: SHOW_ACTIVE },
