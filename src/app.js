@@ -16,6 +16,11 @@ import './app.scss'
 
 const store = configStore()
 
+store.subscribe(() => {
+  const todos = store.getState().todos
+  Taro.setStorageSync('todos', todos)
+})
+
 class App extends Component {
   config = {
     pages: ['pages/index/index'],

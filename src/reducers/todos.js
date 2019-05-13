@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro'
 import {
   ADD_TODO,
   DELETE_TODO,
@@ -20,7 +21,7 @@ const INITIAL_STATE = [
   },
 ]
 
-export default function todos(state = INITIAL_STATE, { type, payload }) {
+export default function todos(state = getInitialTodos(), { type, payload }) {
   switch (type) {
     case ADD_TODO:
       return [
@@ -55,4 +56,9 @@ export default function todos(state = INITIAL_STATE, { type, payload }) {
     default:
       return state
   }
+}
+
+function getInitialTodos() {
+  const localTodos = Taro.getStorageSync('todos')
+  return localTodos ? localTodos : INITIAL_STATE
 }
