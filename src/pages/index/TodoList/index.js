@@ -6,13 +6,7 @@ import NewTodo from '../NewTodo'
 
 export default class TodoList extends Component {
   render() {
-    const {
-      todos,
-      onAddTodo,
-      onEditTodo,
-      onDeleteTodo,
-      onCompleteTodo,
-    } = this.props
+    const { todos, onAdd, onEdit, onDelete, onComplete } = this.props
 
     return (
       <View className='todo-list'>
@@ -20,12 +14,12 @@ export default class TodoList extends Component {
           <TodoItem
             key={todo.id}
             todo={todo}
-            onEdit={onEditTodo}
-            onDelete={onDeleteTodo}
-            onComplete={onCompleteTodo}
+            onEdit={onEdit}
+            onDelete={onDelete}
+            onComplete={onComplete}
           />
         ))}
-        <NewTodo onAdd={onAddTodo} />
+        <NewTodo onAdd={onAdd} />
       </View>
     )
   }

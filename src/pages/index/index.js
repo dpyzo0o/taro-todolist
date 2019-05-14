@@ -9,13 +9,7 @@ import {
   SHOW_ACTIVE,
   SHOW_COMPLETED,
 } from '../../constants/TodoFilters'
-import {
-  setVisibilityFilter,
-  addTodo as add_todo,
-  editTodo as edit_todo,
-  deleteTodo as delete_todo,
-  completeTodo as complete_todo,
-} from '../../actions'
+import * as actions from '../../actions'
 
 import './index.scss'
 
@@ -27,7 +21,7 @@ const tabList = [
 
 @connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )
 export default class Index extends Component {
   config = {
@@ -35,18 +29,17 @@ export default class Index extends Component {
   }
 
   handleTabClick = value => {
-    const { setFilter } = this.props
-    setFilter(tabList[value].filter)
+    this.props.dispatchSetFilter(tabList[value].filter)
   }
 
   render() {
     const {
       todos,
-      addTodo,
-      editTodo,
-      deleteTodo,
-      completeTodo,
       current,
+      dispatchAdd,
+      dispatchEdit,
+      dispatchDelete,
+      dispatchComplete,
     } = this.props
 
     return (
@@ -61,10 +54,10 @@ export default class Index extends Component {
             <AtTabsPane current={current} index={index} key={tab.title}>
               <TodoList
                 todos={todos}
-                onAddTodo={addTodo}
-                onEditTodo={editTodo}
-                onDeleteTodo={deleteTodo}
-                onCompleteTodo={completeTodo}
+                onAdd={dispatchAdd}
+                onEdit={dispatchEdit}
+                onDelete={dispatchDelete}
+                onComplete={dispatchComplete}
               />
             </AtTabsPane>
           ))}
@@ -81,29 +74,8 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    setFilter(filter) {
-      dispatch(setVisibilityFilter(filter))
-    },
-    addTodo(text) {
-      dispatch(add_todo(text))
-    },
-    editTodo(id, text) {
-      dispatch(edit_todo(id, text))
-    },
-    deleteTodo(id) {
-      dispatch(delete_todo(id))
-    },
-    completeTodo(id) {
-      dispatch(complete_todo(id))
-    },
-  }
-}
-
 function getVisibleTodos(state) {
-  const filter = state.visibilityFilter
-  switch (filter) {
+  switch (state.visibilityFilter) {
     case SHOW_ALL:
       return state.todos
     case SHOW_ACTIVE:

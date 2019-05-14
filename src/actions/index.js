@@ -8,35 +8,35 @@ import {
   SET_VISIBILITY_FILTER,
 } from '../constants/ActionTypes'
 
-export const addTodo = text => ({
+export const dispatchAdd = text => ({
   type: ADD_TODO,
   payload: { text },
 })
 
-export const deleteTodo = id => ({
+export const dispatchDelete = id => ({
   type: DELETE_TODO,
   payload: { id },
 })
 
-export const editTodo = (id, text) => ({
+export const dispatchEdit = (id, text) => ({
   type: EDIT_TODO,
   payload: { text, id },
 })
 
-export const completeTodo = id => ({
+export const dispatchComplete = id => ({
   type: COMPLETE_TODO,
   payload: { id },
 })
 
-export const completeAllTodo = () => ({
+export const dispatchCompleteAll = () => ({
   type: COMPLETE_ALL_TODOS,
 })
 
-export const clearCompleted = () => ({
+export const dispatchClearCompleted = () => ({
   type: CLEAR_COMPLETED,
 })
 
-export const setVisibilityFilter = filter => ({
+export const dispatchSetFilter = filter => ({
   type: SET_VISIBILITY_FILTER,
   payload: { filter },
 })
