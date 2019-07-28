@@ -5,6 +5,10 @@ import TodoItem from '../TodoItem'
 import NewTodo from '../NewTodo'
 
 export default class TodoList extends Component {
+  static defaultProps = {
+    todos: [],
+  }
+
   render() {
     const { todos, onAdd, onEdit, onDelete, onComplete } = this.props
 
